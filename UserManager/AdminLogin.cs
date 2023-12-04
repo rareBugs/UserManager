@@ -8,11 +8,14 @@ namespace UserManager
     {
         // This is kind of like "Main", just for login and then we move on to the actual program.
 
+        List<Account> accountList = new List<Account>();
+
         public AdminLogin()
         {
             InitializeComponent();
             OpenWindowsManager.AddForm(this);
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -34,19 +37,16 @@ namespace UserManager
             }
             else
             {
-                textBoxUsername.Clear() ; textBoxPassword.Clear() ;
-                textBoxUsername.Focus() ;
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }
 
         private bool VerifyUserCredentials(string enteredUsername, string enteredPassword, out string userType)
         {
-            userType = "Employee";
             // Load user accounts from the CSV file
             List<Account> accounts = LoadAccountsFromCSV("accountDetails.csv");
 
-            userType = "Employee";
+            userType = "";
             foreach (Account account in accounts)
             {
                 if (account.Username == enteredUsername && account.Password == enteredPassword)
@@ -55,12 +55,10 @@ namespace UserManager
                     return true;
                 }
             }
-            //**below original code
             // Check if the entered credentials match any stored account
-            //**return accounts.Any(account => account.Username == enteredUsername && account.Password == enteredPassword);
-            return false;
+            return accounts.Any(account => account.Username == enteredUsername && account.Password == enteredPassword);
         }
-
+        
         private List<Account> LoadAccountsFromCSV(string filePath)
         {
             List<Account> accounts = new List<Account>();
@@ -91,7 +89,6 @@ namespace UserManager
             {
                 MessageBox.Show("No user details file found.");
             }
-
             return accounts;
         }
 
@@ -99,6 +96,7 @@ namespace UserManager
         private void buttonCreateAccount_Click(object sender, EventArgs e)
         {
             NewAccount newAccountForm = new NewAccount();
+            newAccountForm.SetList(accountList);
             newAccountForm.Show();
         }
 

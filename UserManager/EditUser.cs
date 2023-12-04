@@ -36,7 +36,7 @@ namespace UserManager
             listBoxDepartmentEditor.Items.Clear();
             listBoxRoleEditor.Items.Clear();
 
-            foreach (var user in User.UsersList)
+            foreach (var user in Worker.UsersList)
             {
                 listBoxNameEditor.Items.Add(user.Username);
                 listBoxDepartmentEditor.Items.Add(user.Department);
@@ -61,9 +61,9 @@ namespace UserManager
 
         private void UpdateListBoxSelections(int selectedIndex)
         {
-            if (selectedIndex >= 0 && selectedIndex < User.UsersList.Count)
+            if (selectedIndex >= 0 && selectedIndex < Worker.UsersList.Count)
             {
-                User selectedUser = User.UsersList[selectedIndex];
+                Worker selectedUser = Worker.UsersList[selectedIndex];
 
                 listBoxNameEditor.SelectedIndex = selectedIndex;
                 listBoxDepartmentEditor.SelectedIndex = selectedIndex;
@@ -75,9 +75,9 @@ namespace UserManager
         {
             int selectedIndex = listBoxNameEditor.SelectedIndex;
 
-            if (selectedIndex >= 0 && selectedIndex < User.UsersList.Count)
+            if (selectedIndex >= 0 && selectedIndex < Worker.UsersList.Count)
             {
-                User.UsersList.RemoveAt(selectedIndex);
+                Worker.UsersList.RemoveAt(selectedIndex);
 
                 listBoxNameEditor.Items.Clear();
                 listBoxDepartmentEditor.Items.Clear();
@@ -88,7 +88,7 @@ namespace UserManager
                 textBoxRoleEdit.Clear();
 
 
-                foreach (var user in User.UsersList)
+                foreach (var user in Worker.UsersList)
                 {
                     listBoxNameEditor.Items.Add(user.Username);
                     listBoxDepartmentEditor.Items.Add(user.Department);
@@ -101,9 +101,9 @@ namespace UserManager
         {
             int selectedIndex = listBoxNameEditor.SelectedIndex;
 
-            if (selectedIndex >= 0 && selectedIndex < User.UsersList.Count)
+            if (selectedIndex >= 0 && selectedIndex < Worker.UsersList.Count)
             {
-                User selectedUser = User.UsersList[selectedIndex];
+                Worker selectedUser = Worker.UsersList[selectedIndex];
 
                 // Load user details into textboxes for editing
                 textBoxNameEdit.Text = selectedUser.Username;
@@ -116,19 +116,19 @@ namespace UserManager
         {
             int selectedIndex = listBoxNameEditor.SelectedIndex;
 
-            if (selectedIndex >= 0 && selectedIndex < User.UsersList.Count)
+            if (selectedIndex >= 0 && selectedIndex < Worker.UsersList.Count)
             {
                 // Update user details from textboxes
-                User.UsersList[selectedIndex].Username = textBoxNameEdit.Text;
-                User.UsersList[selectedIndex].Department = textBoxDepartmentEdit.Text;
-                User.UsersList[selectedIndex].Role = textBoxRoleEdit.Text;
+                Worker.UsersList[selectedIndex].Username = textBoxNameEdit.Text;
+                Worker.UsersList[selectedIndex].Department = textBoxDepartmentEdit.Text;
+                Worker.UsersList[selectedIndex].Role = textBoxRoleEdit.Text;
 
                 // Clear and repopulate listboxes
                 listBoxNameEditor.Items.Clear();
                 listBoxDepartmentEditor.Items.Clear();
                 listBoxRoleEditor.Items.Clear();
 
-                foreach (var user in User.UsersList)
+                foreach (var user in Worker.UsersList)
                 {
                     listBoxNameEditor.Items.Add(user.Username);
                     listBoxDepartmentEditor.Items.Add(user.Department);

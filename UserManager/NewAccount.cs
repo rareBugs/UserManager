@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Linq.Expressions;
 
 namespace UserManager
 {
     public partial class NewAccount : Form
     {
+        List<Account> accounts;
         public NewAccount()
         {
             InitializeComponent();
-            OpenWindowsManager.AddForm(this);
+            //OpenWindowsManager.AddForm(this);
         }
-
-
 
         private void checkBoxAdministratorAccount_CheckedChanged(object sender, EventArgs e)
         {
@@ -47,7 +47,6 @@ namespace UserManager
             }
         }
 
-
         private void buttonCreateTesterAccount_Click(object sender, EventArgs e)
         {
             {
@@ -55,7 +54,7 @@ namespace UserManager
                 string password = textBoxDesiredPassword.Text;
                 string type = checkBoxAdministratorAccount.Checked ? "Administrator" : "Employee";
 
-                if (checkBoxEmployeeAccount.Checked || checkBoxAdministratorAccount.Checked);
+                if (checkBoxEmployeeAccount.Checked || checkBoxAdministratorAccount.Checked) { }
                 else
                 {
                     MessageBox.Show("Select an account type to continue.");
@@ -66,7 +65,7 @@ namespace UserManager
                 Account newAccount = new Account(username, password, type);
 
                 // Add the new account to the accountsList
-                Account.AddAccount(newAccount);
+                accounts.Add(newAccount);
 
                 // Save the details permanently to a CSV file
                 SaveAccountDetailsToCSV(newAccount);
@@ -90,14 +89,10 @@ namespace UserManager
 
 
         private void NewAccount_Load(object sender, EventArgs e)
-        {
-
-        }
+        { }
 
         private void NewAccount_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
+        { }
 
         private void buttonCloseNewAccount_Click(object sender, EventArgs e)
         {
@@ -108,6 +103,11 @@ namespace UserManager
         {
             MessageBox.Show("Goodbye!");
             OpenWindowsManager.CloseAllForms();
+        }
+
+        public void SetList(List<Account> accountList)
+        {
+            accounts = accountList;
         }
     }
 }

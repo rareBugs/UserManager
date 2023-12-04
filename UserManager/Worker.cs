@@ -7,30 +7,30 @@ namespace UserManager
     // All user related code and methods here to keep everything clean and easy to keep track of.
     // That includes Json because Json is saving the related user data created with the User class.
 
-    public class User
+    public class Worker
     {
-        private static List<User> usersList = new List<User>();
+        private static List<Worker> usersList = new List<Worker>();
 
         public string Username { get; set; }
         public string Department { get; set; }
         public string Role { get; set; }
 
         // Static constructor to initialize UsersList
-        static User()
+        static Worker()
         {
-            UsersList = new List<User>();
+            UsersList = new List<Worker>();
         }
 
-        public User(string username, string department, string role)
+        public Worker(string workername, string department, string role)
         {
-            Username = username;
+            Username = workername;
             Department = department;
             Role = role;
         }
 
-        public static List<User> UsersList { get; private set; }
+        public static List<Worker> UsersList { get; private set; }
 
-        public static void AddUser(User user)
+        public static void AddUser(Worker user)
         {
             UsersList.Add(user);
         }
@@ -48,7 +48,7 @@ namespace UserManager
             if (File.Exists(filePath))
             {
                 string jsonData = File.ReadAllText(filePath);
-                UsersList = JsonConvert.DeserializeObject<List<User>>(jsonData);
+                UsersList = JsonConvert.DeserializeObject<List<Worker>>(jsonData);
             }
         }
     }
