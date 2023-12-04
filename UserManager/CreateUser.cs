@@ -16,6 +16,7 @@ namespace UserManager
         public CreateUser()
         {
             InitializeComponent();
+            OpenWindowsManager.AddForm(this);
         }
 
         private void CreateUser_Load(object sender, EventArgs e)

@@ -41,9 +41,9 @@
             // 
             // buttonViewUserClose
             // 
-            buttonViewUserClose.Location = new Point(475, 310);
+            buttonViewUserClose.Location = new Point(475, 305);
             buttonViewUserClose.Name = "buttonViewUserClose";
-            buttonViewUserClose.Size = new Size(116, 23);
+            buttonViewUserClose.Size = new Size(116, 28);
             buttonViewUserClose.TabIndex = 0;
             buttonViewUserClose.Text = "Close users list";
             buttonViewUserClose.UseVisualStyleBackColor = true;

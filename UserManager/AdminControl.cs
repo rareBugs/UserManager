@@ -14,12 +14,26 @@ namespace UserManager
 {
     public partial class AdminControl : Form
     {
-        public AdminControl()
+        private string userType;
+        public AdminControl(string userType)
         {
             InitializeComponent();
             OpenWindowsManager.AddForm(this);
+            this.userType = userType;
+            UpdateButtonAccess();
         }
 
+        private void UpdateButtonAccess()
+        {
+            if (userType == "Employee")
+            {
+                // Disable buttons not allowed for Employee
+                buttonEditUsers.Enabled = false;
+                buttonCreateUser.Enabled = false;
+                buttonSaveToFile.Enabled = false;
+            }
+            // Additional conditions for other user types if needed
+        }
         private void AdminControl_Load(object sender, EventArgs e)
         {   
             //Labels that were supposed to be implemented, never got around to finish

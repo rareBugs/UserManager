@@ -24,25 +24,41 @@ namespace UserManager
             string enteredPassword = textBoxPassword.Text;
 
             // Verify the entered credentials
-            if (VerifyUserCredentials(enteredUsername, enteredPassword))
+            if (VerifyUserCredentials(enteredUsername, enteredPassword, out string userType))
             {
                 // If the credentials valid, open the AdminControl
-                AdminControl adminControlForm = new AdminControl();
+                textBoxUsername.Clear(); textBoxPassword.Clear(); // clearing credentials
+                textBoxUsername.Focus(); // focus moves back to username, ready for new login.
+                AdminControl adminControlForm = new AdminControl(userType);
                 adminControlForm.Show();
             }
             else
             {
+                textBoxUsername.Clear() ; textBoxPassword.Clear() ;
+                textBoxUsername.Focus() ;
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }
 
-        private bool VerifyUserCredentials(string enteredUsername, string enteredPassword)
+        private bool VerifyUserCredentials(string enteredUsername, string enteredPassword, out string userType)
         {
+            userType = "Employee";
             // Load user accounts from the CSV file
             List<Account> accounts = LoadAccountsFromCSV("accountDetails.csv");
 
+            userType = "Employee";
+            foreach (Account account in accounts)
+            {
+                if (account.Username == enteredUsername && account.Password == enteredPassword)
+                {
+                    userType = account.Type;
+                    return true;
+                }
+            }
+            //**below original code
             // Check if the entered credentials match any stored account
-            return accounts.Any(account => account.Username == enteredUsername && account.Password == enteredPassword);
+            //**return accounts.Any(account => account.Username == enteredUsername && account.Password == enteredPassword);
+            return false;
         }
 
         private List<Account> LoadAccountsFromCSV(string filePath)
@@ -90,6 +106,12 @@ namespace UserManager
         {
             ForgotPassword forgotPasswordForm = new ForgotPassword();
             forgotPasswordForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Goodbye!");
+            OpenWindowsManager.CloseAllForms();
         }
     }
 }

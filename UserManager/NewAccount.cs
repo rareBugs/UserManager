@@ -47,6 +47,14 @@ namespace UserManager
             }
         }
 
+        private void checkBoxCheckerLogic()
+        {
+            if (checkBoxAdministratorAccount.Checked)
+            {
+                Type = checkBoxAdministratorAccount
+            }
+        }
+
         private void buttonCreateTesterAccount_Click(object sender, EventArgs e)
         {
             {

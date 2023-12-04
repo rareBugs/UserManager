@@ -35,6 +35,7 @@
             buttonLogin = new Button();
             buttonCreateAccount = new Button();
             buttonForgotPassword = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -99,12 +100,24 @@
             buttonForgotPassword.UseVisualStyleBackColor = true;
             buttonForgotPassword.Click += buttonForgotPassword_Click;
             // 
+            // button1
+            // 
+            button1.ForeColor = Color.Red;
+            button1.Location = new Point(85, 140);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 26);
+            button1.TabIndex = 7;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // AdminLogin
             // 
             AcceptButton = buttonLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(248, 249);
+            Controls.Add(button1);
             Controls.Add(buttonForgotPassword);
             Controls.Add(buttonCreateAccount);
             Controls.Add(buttonLogin);
@@ -132,5 +145,6 @@
         private Button buttonLogin;
         private Button buttonCreateAccount;
         private Button buttonForgotPassword;
+        private Button button1;
     }
 }
