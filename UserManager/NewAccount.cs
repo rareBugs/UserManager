@@ -54,12 +54,14 @@ namespace UserManager
                 string username = textBoxDesiredUsername.Text;
                 string password = textBoxDesiredPassword.Text;
                 string type = checkBoxAdministratorAccount.Checked ? "Administrator" : "Employee";
-                
-                if (!checkBoxEmployeeAccount.Checked || !checkBoxAdministratorAccount.Checked)
+
+                if (checkBoxEmployeeAccount.Checked || checkBoxAdministratorAccount.Checked);
+                else
                 {
-                    MessageBox.Show("Must select account type.");
+                    MessageBox.Show("Select an account type to continue.");
                     return;
                 }
+
                 // Create a new Account object
                 Account newAccount = new Account(username, password, type);
 

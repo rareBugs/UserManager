@@ -15,11 +15,6 @@ namespace UserManager
         public string Username { get; set; }
         public string Password { get; set; }
         public string Type { get; set; }
-
-        static Account()
-        {
-            accountsList = new List<Account>();
-        }
         
         public Account(string username, string password, string type)
         {
@@ -28,7 +23,7 @@ namespace UserManager
             Type = type;
         }
 
-        public static List<Account> AccountsList { get; private set; }
+        //public static List<Account> AccountsList { get; private set; }
 
         public static void AddAccount(Account account)
         {
