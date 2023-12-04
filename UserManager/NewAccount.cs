@@ -47,13 +47,6 @@ namespace UserManager
             }
         }
 
-        private void checkBoxCheckerLogic()
-        {
-            if (checkBoxAdministratorAccount.Checked)
-            {
-                Type = checkBoxAdministratorAccount
-            }
-        }
 
         private void buttonCreateTesterAccount_Click(object sender, EventArgs e)
         {
@@ -61,7 +54,12 @@ namespace UserManager
                 string username = textBoxDesiredUsername.Text;
                 string password = textBoxDesiredPassword.Text;
                 string type = checkBoxAdministratorAccount.Checked ? "Administrator" : "Employee";
-
+                
+                if (!checkBoxEmployeeAccount.Checked || !checkBoxAdministratorAccount.Checked)
+                {
+                    MessageBox.Show("Must select account type.");
+                    return;
+                }
                 // Create a new Account object
                 Account newAccount = new Account(username, password, type);
 
