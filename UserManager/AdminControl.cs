@@ -57,7 +57,7 @@ namespace UserManager
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
-                Worker.SaveUserData(filePath);
+                User.SaveUserData(filePath);
                 MessageBox.Show("User data saved to file: " + filePath);
             }
         }
@@ -70,7 +70,7 @@ namespace UserManager
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog.FileName;
-                Worker.LoadUserData(filePath);
+                User.LoadUserData(filePath);
                 MessageBox.Show("User data loaded from file: " + filePath);
             }
         }

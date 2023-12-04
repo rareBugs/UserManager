@@ -36,8 +36,8 @@ namespace UserManager
                 return;
             }
 
-            Worker newWorker = new Worker(name, department, role);
-            Worker.AddUser(newWorker);
+            User newWorker = new User(name, department, role);
+            User.AddUser(newWorker);
 
             textBoxNewName.Clear();
             textBoxNewDepartment.Clear();

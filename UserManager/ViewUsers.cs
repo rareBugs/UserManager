@@ -33,7 +33,7 @@ namespace UserManager
             listBoxViewRole.Items.Clear();
 
             // Populate list boxes with user data
-            foreach (var user in Worker.UsersList)
+            foreach (var user in User.userList)
             {
                 listBoxViewName.Items.Add(user.Username);
                 listBoxViewDepartment.Items.Add(user.Department);
@@ -59,10 +59,10 @@ namespace UserManager
         private void UpdateListBoxSelections(int selectedIndex)
         {
             // Check if an item is selected
-            if (selectedIndex >= 0 && selectedIndex < Worker.UsersList.Count)
+            if (selectedIndex >= 0 && selectedIndex < User.userList.Count)
             {
                 // Get the corresponding User
-                Worker selectedUser = Worker.UsersList[selectedIndex];
+                User selectedUser = User.userList[selectedIndex];
 
                 // Update the selected items in other list boxes
                 listBoxViewName.SelectedIndex = selectedIndex;
@@ -80,7 +80,7 @@ namespace UserManager
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
-                Worker.SaveUserData(filePath);
+                User.SaveUserData(filePath);
                 MessageBox.Show("User data saved to file: " + filePath);
             }
         }
